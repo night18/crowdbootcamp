@@ -28,9 +28,11 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 	//see https://developer.chrome.com/extensions/tabs#event-onUpdated
 	lastTabId = tabId;
 	chrome.pageAction.show(lastTabId);
-
+	console.log("!!!!!!!!!!");
 	//To check whether the user is in Mturk
-	if(changeInfo.url && reg_domain.test(changeInfo.url)){
+	if(changeInfo.url){
+		console.log("@@@@@@@");
+		if (reg_domain.test(changeInfo.url)){
 		chrome.pageAction.setIcon({
 			path: "img/active.png",
 			tabId: lastTabId
@@ -43,7 +45,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 
 
 		
-	}
+		}
+	} 
 	
 })
 
